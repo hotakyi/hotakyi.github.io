@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>聊天加密 - hota&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="現在流行的聊天 app 基本都會使用 端到端加密 (end-to-end encryption, E2EE)，使聊天更為安全。如 Whatsapp, Telegram, iMessage。 由於聊天軟件都會有服務器，如果只是使用 HTTPS，訊息在服務端解密，所以控制到服務端的人，還是能看到你的聊天內容，所以只用 HTTPS 連線到服務器也未能滿足對聊天私密性的需求。 基本原理是 A 客戶端先把">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊天加密">
+<meta property="og:url" content="https://blog.hotagames.com/2018/04/06/encrypted-chat/index.html">
+<meta property="og:site_name" content="hota&#39;s blog">
+<meta property="og:description" content="現在流行的聊天 app 基本都會使用 端到端加密 (end-to-end encryption, E2EE)，使聊天更為安全。如 Whatsapp, Telegram, iMessage。 由於聊天軟件都會有服務器，如果只是使用 HTTPS，訊息在服務端解密，所以控制到服務端的人，還是能看到你的聊天內容，所以只用 HTTPS 連線到服務器也未能滿足對聊天私密性的需求。 基本原理是 A 客戶端先把">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.hotagames.com/images/encrypted-chat.jpg">
+<meta property="og:updated_time" content="2018-04-06T13:09:48.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="聊天加密">
+<meta name="twitter:description" content="現在流行的聊天 app 基本都會使用 端到端加密 (end-to-end encryption, E2EE)，使聊天更為安全。如 Whatsapp, Telegram, iMessage。 由於聊天軟件都會有服務器，如果只是使用 HTTPS，訊息在服務端解密，所以控制到服務端的人，還是能看到你的聊天內容，所以只用 HTTPS 連線到服務器也未能滿足對聊天私密性的需求。 基本原理是 A 客戶端先把">
+<meta name="twitter:image" content="https://blog.hotagames.com/images/encrypted-chat.jpg">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/webfonts/ptserif/main.css">
+  <link rel="stylesheet" href="/webfonts/ptserif/source-code-pro.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo logo-text" href="/">hota&#39;s</a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/atom.xml">Rss</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.hotagames.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-encrypted-chat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      聊天加密
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2018/04/06/encrypted-chat/" class="article-date">
+  <time datetime="2018-04-06T12:58:20.000Z" itemprop="datePublished">2018-04-06</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/encrypted-chat.jpg" alt=""></p>
+<p>現在流行的聊天 app 基本都會使用 <strong>端到端加密</strong> (end-to-end encryption, E2EE)，使聊天更為安全。如 <a href="https://www.whatsapp.com/" target="_blank" rel="noopener">Whatsapp</a>, <a href="https://telegram.org/" target="_blank" rel="noopener">Telegram</a>, <a href="https://en.wikipedia.org/wiki/IMessage" target="_blank" rel="noopener">iMessage</a>。</p>
+<p>由於聊天軟件都會有服務器，如果只是使用 HTTPS，訊息在服務端解密，所以控制到服務端的人，還是能看到你的聊天內容，所以只用 HTTPS 連線到服務器也未能滿足對聊天私密性的需求。</p>
+<p>基本原理是 A 客戶端先把聊天內容加密發到服務器，服務器可能先保存或直接把加密過的內容發給 B 客戶端，然後 B 客戶端解密並顯示內容；由於服務端沒法解密，所以服務端保不保存聊天內容根本不用擔心。詳細原理可以看<a href="https://zh.wikipedia.org/wiki/端到端加密" target="_blank" rel="noopener">這裡</a>。</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/07/page-hijacking/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-title"><span>&lt;</span>&nbsp;
+        
+          網頁劫持
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/05/basic-security/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">網絡安全誤會&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<div class="share_addthis">
+  <div class="sharing addthis_toolbox share">
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Joe Leung&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
