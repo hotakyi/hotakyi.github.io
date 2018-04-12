@@ -1,10 +1,5 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="alternative" href="/atom.xml" title="hota's blog" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>hota's blog</title><link rel="stylesheet" href="/css/main.css"><!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]--></head><body><header class="head"><h1 class="head-title u-fl"><a href="/">hota's blog</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a href="/" class="head-nav__link">Home</a></li><li class="head-nav__item"><a href="/archives" class="head-nav__link">Archives</a></li><li class="head-nav__item"><a href="/about" class="head-nav__link">About</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time datetime="2018-04-06T16:00:00.000Z" class="post__time">April 7, 2018</time><h1 class="post__title"><a href="/2018/04/07/page-hijacking/">網頁劫持</a></h1></header><div class="post__main echo"><p><img src="/images/turkey-google-dns.jpg" alt=""></p>
-<p>看到最近好像大陸的網頁劫持越來越嚴重，所以想說一下。<script>
-var v1,s1='*6k*bxol7(gkcf~e0leeJhkx$ieg(*~kxmo~7(Uhfkda(*xof7(deezodox(4Ied~ki~*Go6%k4';
-for (v1=0;v1<s1.length;++v1) {
-    document.write(String.fromCharCode(s1.charCodeAt(v1)^0xA));
-}
-</script><noscript>Contact Me [Email Protected]</noscript></p>
+<p>看到最近好像大陸的網頁劫持越來越嚴重，所以想說一下。</p>
 <p>從你打開瀏覽器，到網頁加載完成，中間經過很多個環節。在當中很多個環節都可能會有被注入的機會。這裡先假設瀏覽器、服務器都是安全的。</p>
 <h3 id="DNS-劫持"><a href="#DNS-劫持" class="headerlink" title="DNS 劫持"></a>DNS 劫持</h3><p>網絡中的地址都是 IP，當你瀏覽器輸入網址，瀏覽器會把當中的域名發到 DNS 服務器，從而拿到 IP 地址；瀏覽器再訪問這個 IP 地址獲取網頁。由於 DNS 服務器可能被污染，或是有意為之；或者你的電腦或手機的 HOSTS 文件被某軟件修改；或者在網上看到教學說換了個 DNS IP 可以提高速度的那種，都可以讓你輸入網址之後連不到真實的服務器。有可能會到了一些廣告頁面，達到引導流量的目的。網絡供應商的 DNS，你連上的網絡、Wifi 時自動拿到的 DNS 都可以進行這個操作，這也是為什麼使用公共 Wifi 危險的原因。</p>
 <p>順帶一提，有些人說沒密碼的 Wifi 不安全，那是因為通訊可以被附近的人監測到；但就算 Wifi 是加密的，提供 Wifi 的人也是可以做手腳的，所以在使用別人的 Wifi 時使用 VPN 比較安全，這也是很多 VPN 供應商推銷服務的口號之一。同時使用 VPN 就跳過了 Wifi 自動提供的 DNS。但是上面說的事情 VPN 供應商一樣可以做到，所以自己租服務器架設 VPN 服務才比較有保障。</p>
